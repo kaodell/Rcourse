@@ -1,0 +1,5 @@
+---
+title: "R for Fire Data - Week 1"
+output: html_notebook
+---
+
