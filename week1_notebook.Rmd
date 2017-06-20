@@ -3,3 +3,55 @@ title: "R for Fire Data - Week 1"
 output: html_notebook
 ---
 
+##
+Loading data from arctas campaign with brief statistical analysis
+Written to run from Rcourse folder
+
+```{r}
+#load data using function from Nick Good
+#first source function
+source("scripts_fromNickGood/r_functions.R")
+
+#now use function to load data
+  arctas_data <- lapply(list.files("../data/arctas",
+                                   pattern = "_R14.ict$",
+                                   full.names = TRUE),
+                        read_ict_file) %>%
+                 bind_rows()
+
+```
+
+##
+Investigate loaded dataset
+
+```{r}
+#class of dataset
+class(arctas_data)
+
+#class of first column
+class(arctas_data$utc)
+
+#find number of rows and columns in the dataset
+ncol(arctas_data)
+nrow(arctas_data)
+
+#look at names of each column
+colnames <- colnames(arctas_data)
+
+#extract first row and first column
+first_col <- arctas_data[1,]
+first_row <- arctas_data[,1]
+
+```
+
+##
+Statistics on NO data
+
+```{r}
+#pull no mixing ratio in the 4th column
+no_col_4 <- arctas_data$no[4]
+no_flight_10 <- arctas_data$no[which(arctas_data$flight == 10)]
+
+#summary statistics
+```
+
